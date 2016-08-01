@@ -1,0 +1,36 @@
+<?php
+
+function getAllGoods(){
+	$sql = "select * from shop_cate";
+	$rows = fetchAll($sql);
+	return $rows;
+}
+
+function editGoods_cate($id){
+    //var_dump($_POST);
+	$arr = $_POST;
+	if (update("shop_cate", $arr,"id={$id}")){
+		alertMes("±à¼­³É¹¦£¡", "goods_sort.php");
+	}else {
+		alertMes("±à¼­Ê§°Ü£¡ÇëÖØÐÂ±à¼­", "goods_sort.php");
+	}
+}
+
+function delGoods_cate($id){
+	if(delete("shop_cate","id={$id}")){
+		alertMes("É¾³ý³É¹¦£¡", "goods_sort.php");
+	}else{
+		alertMes("É¾³ýÊ§°Ü£¡ÇëÖØÐÂÉ¾³ý", "goods_sort.php");
+	}
+}
+
+function addGoods_cate(){
+	$add = $_POST;
+	//var_dump($add);
+	//var_dump($_POST);
+	if(insert("shop_cate", $add)){
+		alertMes("Ìí¼Ó³É¹¦£¡", "goods_sort.php");
+	}else{
+		alertMes("Ìí¼ÓÊ§°Ü£¡ÇëÖØÐÂÌí¼Ó", "addGoods_cate.php");
+	}
+}
